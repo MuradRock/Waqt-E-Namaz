@@ -1,0 +1,51 @@
+export default {
+  common: {
+    appName: 'वक़्त-ए-नमाज़',
+    save: 'सहेजें',
+    cancel: 'रद्द करें',
+    retry: 'फिर से कोशिश करें',
+    loading: 'लोड हो रहा है...',
+    error: 'कुछ गड़बड़ हो गई',
+    empty: 'इस तारीख़ के लिए समय प्रकाशित नहीं है',
+  },
+  auth: {
+    login: 'लॉगिन',
+    register: 'खाता बनाएँ',
+    email: 'ईमेल',
+    password: 'पासवर्ड',
+    displayName: 'नाम',
+    switchToRegister: 'खाता चाहिए? रजिस्टर करें',
+    switchToLogin: 'खाता है? लॉगिन करें',
+    logout: 'लॉगआउट',
+  },
+  home: {
+    subscriptions: 'मेरी मस्जिदें',
+    findNearby: 'पास की मस्जिदें खोजें',
+    noSubscriptions: 'अभी तक कोई मस्जिद सब्सक्राइब नहीं की गई है।',
+  },
+  prayers: {
+    fajr: 'फ़ज्र', zuhr: 'ज़ुहर', jumuah: 'जुमा',
+    asr: 'असर', maghrib: 'मग़रिब', isha: 'ईशा',
+    suhoor: 'सहरी', iftar: 'इफ़्तार',
+    azan: 'अज़ान', namaz: 'नमाज़',
+  },
+  search: {
+    title: 'पास की मस्जिदें',
+    radiusKm: 'दायरा (किमी)',
+    noResults: '{{radius}} किमी के भीतर कोई मस्जिद नहीं मिली',
+    permissionDenied: 'लोकेशन अनुमति ज़रूरी है। सेटिंग्स में चालू करें।',
+  },
+  reminders: {
+    title: 'रिमाइंडर',
+    tone: 'रिमाइंडर टोन',
+    preview: 'सुनें',
+    saved: 'सेव हो गया',
+    revertOnFail: 'सेव नहीं हो सका। पहले जैसा कर दिया।',
+  },
+  settings: {
+    title: 'सेटिंग्स',
+    language: 'भाषा',
+    languages: { en: 'English', hi: 'हिंदी', ur: 'اردو' },
+    persistFailed: 'भाषा सेव नहीं हो सकी।',
+  },
+};

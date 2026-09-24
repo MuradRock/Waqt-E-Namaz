@@ -1,0 +1,51 @@
+export default {
+  common: {
+    appName: 'وقتِ نماز',
+    save: 'محفوظ کریں',
+    cancel: 'منسوخ',
+    retry: 'دوبارہ کوشش',
+    loading: 'لوڈ ہو رہا ہے...',
+    error: 'کچھ غلط ہو گیا',
+    empty: 'اس تاریخ کے لیے اوقات شائع نہیں ہوئے',
+  },
+  auth: {
+    login: 'لاگ ان',
+    register: 'اکاؤنٹ بنائیں',
+    email: 'ای میل',
+    password: 'پاس ورڈ',
+    displayName: 'نام',
+    switchToRegister: 'اکاؤنٹ چاہیے؟ رجسٹر کریں',
+    switchToLogin: 'اکاؤنٹ ہے؟ لاگ ان کریں',
+    logout: 'لاگ آؤٹ',
+  },
+  home: {
+    subscriptions: 'میری مساجد',
+    findNearby: 'قریبی مساجد تلاش کریں',
+    noSubscriptions: 'ابھی کسی مسجد کو سبسکرائب نہیں کیا۔',
+  },
+  prayers: {
+    fajr: 'فجر', zuhr: 'ظہر', jumuah: 'جمعہ',
+    asr: 'عصر', maghrib: 'مغرب', isha: 'عشاء',
+    suhoor: 'سحری', iftar: 'افطار',
+    azan: 'اذان', namaz: 'نماز',
+  },
+  search: {
+    title: 'قریبی مساجد',
+    radiusKm: 'رداس (کلومیٹر)',
+    noResults: '{{radius}} کلومیٹر کے اندر کوئی مسجد نہیں ملی',
+    permissionDenied: 'مقام کی اجازت درکار ہے۔ ڈیوائس سیٹنگز سے فعال کریں۔',
+  },
+  reminders: {
+    title: 'یاد دہانیاں',
+    tone: 'یاد دہانی کی آواز',
+    preview: 'پیش سماعت',
+    saved: 'محفوظ ہو گیا',
+    revertOnFail: 'محفوظ نہیں ہو سکا۔ واپس کر دیا۔',
+  },
+  settings: {
+    title: 'ترتیبات',
+    language: 'زبان',
+    languages: { en: 'English', hi: 'हिंदी', ur: 'اردو' },
+    persistFailed: 'زبان محفوظ نہیں ہو سکی۔',
+  },
+};

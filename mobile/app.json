@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "Waqt E Namaz",
+    "slug": "waqt-e-namaz",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "waqtenamaz",
+    "userInterfaceStyle": "automatic",
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.waqt.enamaz",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "We use your location to find mosques near you."
+      }
+    },
+    "android": {
+      "package": "com.waqt.enamaz",
+      "adaptiveIcon": { "backgroundColor": "#ffffff" },
+      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION", "SCHEDULE_EXACT_ALARM", "POST_NOTIFICATIONS"]
+    },
+    "web": { "bundler": "metro" },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-localization",
+      ["expo-location", { "locationAlwaysAndWhenInUsePermission": "We use your location to find mosques near you." }],
+      ["expo-notifications", { "icon": "./assets/notification-icon.png", "color": "#0b6e4f" }]
+    ],
+    "experiments": { "typedRoutes": true },
+    "extra": {
+      "apiBaseUrl": "http://10.0.2.2:4000/api/v1"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "family": "waqt-api",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "runtimePlatform": { "cpuArchitecture": "X86_64", "operatingSystemFamily": "LINUX" },
+  "executionRoleArn": "arn:aws:iam::REPLACE_ACCOUNT:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::REPLACE_ACCOUNT:role/waqt-api-task-role",
+  "containerDefinitions": [
+    {
+      "name": "waqt-api",
+      "image": "REPLACE_ACCOUNT.dkr.ecr.REPLACE_REGION.amazonaws.com/waqt-api:latest",
+      "essential": true,
+      "portMappings": [{ "containerPort": 4000, "protocol": "tcp" }],
+      "environment": [
+        { "name": "NODE_ENV", "value": "production" },
+        { "name": "PORT", "value": "4000" }
+      ],
+      "secrets": [
+        { "name": "DATABASE_URL",   "valueFrom": "arn:aws:secretsmanager:REPLACE_REGION:REPLACE_ACCOUNT:secret:waqt/api/prod:DATABASE_URL::" },
+        { "name": "JWT_SECRET",     "valueFrom": "arn:aws:secretsmanager:REPLACE_REGION:REPLACE_ACCOUNT:secret:waqt/api/prod:JWT_SECRET::" },
+        { "name": "JWT_EXPIRES_IN", "valueFrom": "arn:aws:secretsmanager:REPLACE_REGION:REPLACE_ACCOUNT:secret:waqt/api/prod:JWT_EXPIRES_IN::" },
+        { "name": "CORS_ORIGINS",   "valueFrom": "arn:aws:secretsmanager:REPLACE_REGION:REPLACE_ACCOUNT:secret:waqt/api/prod:CORS_ORIGINS::" },
+        { "name": "LOG_LEVEL",      "valueFrom": "arn:aws:secretsmanager:REPLACE_REGION:REPLACE_ACCOUNT:secret:waqt/api/prod:LOG_LEVEL::" }
+      ],
+      "healthCheck": {
+        "command": ["CMD-SHELL", "wget -qO- http://127.0.0.1:4000/health || exit 1"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 20
+      },
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/waqt-api",
+          "awslogs-region": "REPLACE_REGION",
+          "awslogs-stream-prefix": "ecs",
+          "awslogs-create-group": "true"
+        }
+      }
+    }
+  ]
+}

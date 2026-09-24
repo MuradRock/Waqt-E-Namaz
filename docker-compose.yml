@@ -1,0 +1,47 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: waqt_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: waqt
+      POSTGRES_PASSWORD: waqt
+      POSTGRES_DB: waqt
+    # Host port 5433 -> container 5432 (local Postgres already occupies 5432).
+    ports:
+      - "5433:5432"
+    volumes:
+      - waqt_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U waqt -d waqt"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: dev
+    container_name: waqt_api
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      PORT: "4000"
+      DATABASE_URL: postgresql://waqt:waqt@db:5432/waqt?schema=public
+      JWT_SECRET: dev-only-change-me-please-32-bytes
+      JWT_EXPIRES_IN: "24h"
+      LOG_LEVEL: debug
+      CORS_ORIGINS: "*"
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      db:
+        condition: service_healthy
+    command: sh -c "npx prisma migrate deploy && npm run dev"
+
+volumes:
+  waqt_db_data:
